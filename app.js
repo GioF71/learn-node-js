@@ -57,7 +57,7 @@ let alice = new ExtPerson("Alice");
 alice.emit("name");
 
 const readline = require("readline");
-const rl = readline.createInterface({input : process.stdin, output : process.stdout});
+const readLine = readline.createInterface({input : process.stdin, output : process.stdout});
 
 let num1 = Math.floor((Math.random() * 10) + 1);
 let num2 = Math.floor((Math.random() * 10) + 1);
@@ -73,23 +73,23 @@ const prompt = (readLine, userInput) => {
     readLine.prompt();
 }
 
-rl.question(`What is ${num1} + ${num2} ? \n`, (userInput) => {
+readLine.question(`What is ${num1} + ${num2} ? \n`, (userInput) => {
     //if (userInput.trim() == answer) {
     if (evaluateResponse(userInput)) {
-        rl.close();
+        readLine.close();
     } else {
-        prompt(rl, userInput);
+        prompt(readLine, userInput);
     }
 });
 
-rl.on("close", () => {
+readLine.on("close", () => {
     console.log("Correct!!!");
 });
 
-rl.on('line', (userInput) => {
+readLine.on('line', (userInput) => {
     if (evaluateResponse(userInput)) {
-        rl.close();
+        readLine.close();
     } else {
-        prompt(rl, userInput);
+        prompt(readLine, userInput);
     }
 });
