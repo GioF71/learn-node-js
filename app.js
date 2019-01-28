@@ -33,8 +33,7 @@ class ExtPerson extends Person {
     constructor(name) {
         super();
         this._name = name;
-        this.on("name", () => printMyName(this));
-        //this.on("name", () => printN());
+        this.on("name", () => this.printN());
     }
 
     printN() { 
@@ -46,18 +45,25 @@ class ExtPerson extends Person {
     }
 }
 
+//const printMyName = (person) => { console.log("My name is " + person.name + " (function)") };
 
 var pedro = new Person("Pedro");
-
-const printMyName = (person) => { console.log("My name is " + person.name) };
-
-//pedro.on("name", () => { console.log("My name is " + pedro.name);});
-pedro.on("name", () => printMyName(pedro));
+pedro.on("name", () => { console.log("My name is " + pedro.name + " (inline)" );});
 pedro.emit("name");
 
-var christina = new Person("Christina");
-christina.on("name", () => printMyName(christina));
+var alvaro = new Person("Alvaro");
+alvaro.on("name", () => { tutorial.printMyName(alvaro)});
+alvaro.emit("name");
 
+const printMyName = tutorial.printMyName;
+
+var santiago = new Person("Santiago");
+santiago.on("name", () => { printMyName(santiago);});
+santiago.emit("name");
+
+
+
+var christina = new ExtPerson("Christina");
 christina.emit("name");
 
 var alice = new ExtPerson("Alice");

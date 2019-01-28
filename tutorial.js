@@ -7,4 +7,9 @@ class SomeMathObject {
     }
 }
 
-module.exports = {sum : sum, PI : PI, SomeMathObject : SomeMathObject};
+const printMyName = (person) => { 
+    console.log("My name is " + person.name + " (function)");
+};
+
+
+module.exports = {sum : sum, printMyName : printMyName, PI : PI, SomeMathObject : SomeMathObject};
