@@ -45,8 +45,6 @@ class ExtPerson extends Person {
     }
 }
 
-//const printMyName = (person) => { console.log("My name is " + person.name + " (function)") };
-
 var pedro = new Person("Pedro");
 pedro.on("name", () => { console.log("My name is " + pedro.name + " (inline)" );});
 pedro.emit("name");
@@ -60,8 +58,6 @@ const printMyName = tutorial.printMyName;
 var santiago = new Person("Santiago");
 santiago.on("name", () => { printMyName(santiago);});
 santiago.emit("name");
-
-
 
 var christina = new ExtPerson("Christina");
 christina.emit("name");
