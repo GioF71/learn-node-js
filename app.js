@@ -55,3 +55,41 @@ christina.emit("name");
 
 let alice = new ExtPerson("Alice");
 alice.emit("name");
+
+const readline = require("readline");
+const rl = readline.createInterface({input : process.stdin, output : process.stdout});
+
+let num1 = Math.floor((Math.random() * 10) + 1);
+let num2 = Math.floor((Math.random() * 10) + 1);
+
+let answer = num1 + num2;
+
+const evaluateResponse = (userInput) => {
+    return userInput.trim() == answer;
+}
+
+const prompt = (readLine, userInput) => {
+    readLine.setPrompt(`Your answer of ${ userInput } is incorrect, try again\n`);
+    readLine.prompt();
+}
+
+rl.question(`What is ${num1} + ${num2} ? \n`, (userInput) => {
+    //if (userInput.trim() == answer) {
+    if (evaluateResponse(userInput)) {
+        rl.close();
+    } else {
+        prompt(rl, userInput);
+    }
+});
+
+rl.on("close", () => {
+    console.log("Correct!!!");
+});
+
+rl.on('line', (userInput) => {
+    if (evaluateResponse(userInput)) {
+        rl.close();
+    } else {
+        prompt(rl, userInput);
+    }
+});

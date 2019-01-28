@@ -24,6 +24,4 @@ class Person extends EventEmitter {
     }
 }
 
-
-
 module.exports = {Person : Person, sum : sum, printMyName : printMyName, PI : PI, SomeMathObject : SomeMathObject};
