@@ -62,24 +62,23 @@ const readLine = readline.createInterface({input : process.stdin, output : proce
 let num1 = Math.floor((Math.random() * 10) + 1);
 let num2 = Math.floor((Math.random() * 10) + 1);
 
-let answer = num1 + num2;
 let numTrials = 1;
 
 const evaluateResponse = (userInput) => {
-    return userInput.trim() == answer;
+    return userInput.trim() == (num1 + num2);
 }
 
 const prompt = (readLine, userInput) => {
     readLine.setPrompt(`Your answer of ${ userInput } is incorrect, please try again\n`);
     readLine.prompt();
+    ++numTrials;
 }
 
-readLine.question(`What is ${num1} + ${num2} ? \n`, (userInput) => {
+readLine.question(`What is ${num1} + ${num2}?\n`, (userInput) => {
     if (evaluateResponse(userInput)) {
         readLine.close();
     } else {
         prompt(readLine, userInput);
-        ++numTrials;
     }
 });
 
@@ -92,6 +91,5 @@ readLine.on('line', (userInput) => {
         readLine.close();
     } else {
         prompt(readLine, userInput);
-        ++numTrials;
     }
 });
