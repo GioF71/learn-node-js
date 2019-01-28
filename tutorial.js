@@ -1,3 +1,5 @@
+const EventEmitter = require('events');
+
 const sum = (num1, num2) => num1 + num2;
 const PI = 3.14;
 
@@ -11,5 +13,17 @@ const printMyName = (person) => {
     console.log("My name is " + person.name + " (function)");
 };
 
+class Person extends EventEmitter {
+    constructor(name) {
+        super();
+        this._name = name;
+    }
 
-module.exports = {sum : sum, printMyName : printMyName, PI : PI, SomeMathObject : SomeMathObject};
+    get name() {
+        return this._name;
+    }
+}
+
+
+
+module.exports = {Person : Person, sum : sum, printMyName : printMyName, PI : PI, SomeMathObject : SomeMathObject};
