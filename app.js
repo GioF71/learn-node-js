@@ -63,6 +63,7 @@ let num1 = Math.floor((Math.random() * 10) + 1);
 let num2 = Math.floor((Math.random() * 10) + 1);
 
 let answer = num1 + num2;
+let numTrials = 1;
 
 const evaluateResponse = (userInput) => {
     return userInput.trim() == answer;
@@ -74,16 +75,16 @@ const prompt = (readLine, userInput) => {
 }
 
 readLine.question(`What is ${num1} + ${num2} ? \n`, (userInput) => {
-    //if (userInput.trim() == answer) {
     if (evaluateResponse(userInput)) {
         readLine.close();
-    } else {2
+    } else {
         prompt(readLine, userInput);
+        ++numTrials;
     }
 });
 
 readLine.on("close", () => {
-    console.log("Correct!!!");
+    console.log("Correct answer in " + numTrials + " trials.");
 });
 
 readLine.on('line', (userInput) => {
@@ -91,5 +92,6 @@ readLine.on('line', (userInput) => {
         readLine.close();
     } else {
         prompt(readLine, userInput);
+        ++numTrials;
     }
 });
