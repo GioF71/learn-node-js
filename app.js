@@ -25,7 +25,7 @@ class ExtPerson extends tutorial.Person {
         this.on("name", () => this.printN());
     }
 
-    printN() { 
+    printN() {
         console.log("My name is " + this._name);
     }
 
@@ -69,7 +69,7 @@ const evaluateResponse = (userInput) => {
 }
 
 const prompt = (readLine, userInput) => {
-    readLine.setPrompt(`Your answer of ${ userInput } is incorrect, try again\n`);
+    readLine.setPrompt(`Your answer of ${ userInput } is incorrect, please try again\n`);
     readLine.prompt();
 }
 
@@ -77,7 +77,7 @@ readLine.question(`What is ${num1} + ${num2} ? \n`, (userInput) => {
     //if (userInput.trim() == answer) {
     if (evaluateResponse(userInput)) {
         readLine.close();
-    } else {
+    } else {2
         prompt(readLine, userInput);
     }
 });
